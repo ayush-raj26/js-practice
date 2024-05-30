@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chai Aur Code | DOM </title>
+</head>
+<body style="background-color: black; color: rgb(247, 238, 223);">
+    <ul class="language">
+        <li> Javascript </li>
+    </ul>
+</body>
+
+<script>
+
+    function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+    }
+    addLanguage('Python');
+    addLanguage('Typescript');     // This takes a bit more time if there are way too many elements in the DOM
+    
+    
+    function addLanguageOptimized(langName) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    addLanguageOptimized('Java');  // This is faster than the previous one, we don't have to parse the tree for HTML, innerHTML is a bit slower than appendChild, as it has to append to the whole DOM tree.
+
+
+    // EDIT ELEMENT
+    const secondLang = document.querySelector("li:nth-child(2)");
+    // secondLang.textContent = 'React'; // This will replace the text content of the second li element with 'React'
+    const newLi = document.createElement('li');
+    newLi.textContent = 'React';
+    secondLang.replaceWith(newLi); // This will replace the second li element with a new li element with text content 'React', optimised method
+
+    // Another way to edit element
+    const firstLang = document.querySelector("li:nth-child(1)");
+    firstLang.outerHTML = "<li>Mojo</li>"; // This will replace the first li element with a new li element with text content 'Mojo', but this is not an optimised method, as it has to parse the whole tree for HTML
+
+    // REMOVE ELEMENT
+    const lastChild = document.querySelector("li:last-child");
+    lastChild.remove(); // This will remove the last li element from the ul element
+</script>
+
+</html>
