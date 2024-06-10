@@ -19,6 +19,7 @@
    </div>
 </body>
 <script>
+    // Not a good way
     // document.getElementById('owl').onclick = function(){
     //     alert("owl clicked")
     // }
@@ -26,6 +27,7 @@
      // attachEvent()
     // jQuery - on
 
+    // To study in the object of event listener
     // type, timestamp, defaultPrevented
     // target, toElement, srcElement, currentTarget,
     // clientX, clientY, screenX, screenY
@@ -35,6 +37,7 @@
     //     console.log("clicked inside the ul");
     // }, false)
 
+    // Best way
     // document.getElementById('owl').addEventListener('click', function(e){
     //     console.log("owl clicked");
     //     e.stopPropagation()
@@ -59,5 +62,9 @@
     })
     
     //removeIt.parentNode.removeChild(removeIt)
+
+
+    // The default false in event listener (the third parameter) is for bubbling up, i.e. the event will be triggered from the innermost element to the outermost element. If we set it to true, it will be triggered from the outermost element to the innermost element.
+    // in true, it is called event capturing
 </script>
 </html>
